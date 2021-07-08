@@ -7,6 +7,20 @@ class ClientController {
         return $this -> clientsModel = new ClientModel();
     }
 
+    public function home() {
+        $result = $this -> clientsModel -> listClients();
+
+        $arrayClients = array();
+
+        while($client = $result -> fetch_assoc()){
+            array_push($arrayClients, $client);
+        }
+
+        require_once('views/templates/header.php');
+        require_once('views/clients/listClients.php');
+        require_once('views/templates/footer.php'); 
+    }
+
     public function listClients() {
         $result = $this -> clientsModel -> listClients();
 

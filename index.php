@@ -5,6 +5,7 @@
 
   require_once('controllers/ClientController.php');
   $client = new ClientController();
+  $client -> home();
   switch ($_REQUEST['action']){
     case 'listClients':
         $client -> listClients();
